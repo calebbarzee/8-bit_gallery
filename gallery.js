@@ -156,5 +156,24 @@ const art = {
 };
 
 console.log(art);
+reset_view()
 }
+
+check_form_submission(){
+    // checks response to see if it matches database
+
+    display_results();
+    
+}
+display_results(){
+    // displays if user is correct or not and the painting information
+
+    setTimeout(10000);
+    reset_view();
+}
+reset_view(){
+    // displays form and new art for user to guess again
+
+}
+
 main();

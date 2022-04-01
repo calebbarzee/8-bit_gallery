@@ -7,3 +7,5 @@ A 8-bit art gallery experience complete with walking, art, art descriptions, ben
 Navigate to the hosted github page url
 Walk around using the arrow keys
 Enjoy the art
+
+Or play the arcade mode and try to guess the work of art

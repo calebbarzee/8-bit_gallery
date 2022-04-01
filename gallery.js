@@ -173,7 +173,7 @@ display_results(){
 }
 reset_view(){
     // displays form and new art for user to guess again
-
+    Math.random()
 }
 
 main();

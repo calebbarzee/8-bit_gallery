@@ -6,14 +6,6 @@ from PIL import Image
 # https://pillow.readthedocs.io/en/stable/reference/Image.html
 
 
-class ArtList:
-    def __init__(self):
-        self.art_list = []
-
-    def _add_item(self, art_object):
-        self.art_list.append(art_object)
-
-
 class FileEntry:
     def __init__(self, movement, artist, filename):
         self.filepath = f"8-bit_art_processed/{movement}/{artist}/{filename}"
@@ -22,17 +14,17 @@ class FileEntry:
         self.artist = self._get_artist(artist)
 
     def _get_movement(self, movement):
-        movement.replace("_", "U+0020")
+        movement = movement.replace("_", " ")
         movement = movement.title()
         return movement
 
     def _get_artist(self, artist):
-        artist.replace("_", "U+0020")
+        artist = artist.replace("_", " ")
         artist = artist.title()
         return artist
 
     def _get_title(self, filename):
-        filename.replace("_", "U+0020")
+        filename = filename.replace("_", " ")
         head, sep, tail = filename.partition('.')
         title = head.title()
         return title
@@ -70,13 +62,19 @@ def pixelate(movement, artist, img_filename):
 
 
 def generate_json(art_list):
-    with open("../art.json") as json_file:
-        json_file.write(json.dumps(art_list))
+    # with open("art.json") as json_file:
+    #     json_file.write(json.dumps(art_list))
+
+    f = open("art.json", "w")
+    text = json.dumps(art_list)
+    print(text)
+    f.write(text)
+    f.close()
 
 
 def traverse_files():
     # initialize art list class
-    art_list = ArtList()
+    art_list = []
 
     movements = os.listdir("8-bit_art")
     if ".DS_Store" in movements:
@@ -86,7 +84,7 @@ def traverse_files():
         artists = os.listdir(f"8-bit_art/{movement}")
         if ".DS_Store" in artists:
             artists.remove(".DS_Store")
-        print(artists)
+        # print(artists)
         for artist in artists:
             images = os.listdir(f"8-bit_art/{movement}/{artist}")
             if ".DS_Store" in images:
@@ -94,8 +92,11 @@ def traverse_files():
             for image in images:
                 pixelate(movement, artist, image)
                 art_object = FileEntry(movement, artist, image)
-                # add new art_object to art_list
-                art_list._add_item(art_object)
+                # convert object to dictionary
+                art_dict = art_object.__dict__
+                # add new art_dict to art_list
+                art_list.append(art_dict)
+                # print(art_list)
     generate_json(art_list)
 
 

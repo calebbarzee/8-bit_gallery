@@ -25,6 +25,8 @@ function display_art(art_list) {
     art_img_spot.src = art_list[index].filepath;
     art_img_spot.alt = art_list[index].title;
     movement_spot.innerHTML = art_list[index].movement;
+    title_spot.innerHTML = art_list[index].title;
+
 }
 
 async function get_art_list() {
@@ -37,9 +39,8 @@ async function get_art_list() {
 
 function check_correct(title_response, artist_response){
     // checks response to see if it matches database
-    lowercase_title = art.art_id.title.toLowerCase();
     lowercase_artist = art.art_id.artist.toLowerCase();
-    eval = lowercase_title == title_response.toLowerCase() && lowercase_artist == artist_response.toLowerCase();
+    eval = lowercase_artist == artist_response.toLowerCase();
     return eval
 }
 function generate_random_index(){

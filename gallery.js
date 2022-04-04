@@ -1,5 +1,5 @@
 
-//     setTimeout(reset_view(art_id), 10000);
+//     
 // }
 // function reset_view(art_id){
 //     // displays form and new art for user to guess again
@@ -7,6 +7,7 @@
 //     document.getElementById("art_img").alt = art.art_id.title
 // }
 // main();
+
 
 function generate_art() {
     //gets the next artwork in the list and displays it
@@ -36,8 +37,12 @@ async function get_art_list() {
     // console.log(art_list);
     return art_list
 }
+function check_form(artist_response){
 
-function check_correct(title_response, artist_response){
+    setTimeout(generate_art(), 10000);
+}
+
+function check_correct(artist_response){
     // checks response to see if it matches database
     lowercase_artist = art.art_id.artist.toLowerCase();
     eval = lowercase_artist == artist_response.toLowerCase();
@@ -49,4 +54,5 @@ function generate_random_index(){
         // console.log(random_index);
         return random_index
     }
+
 generate_art();

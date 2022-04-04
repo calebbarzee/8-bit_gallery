@@ -48,7 +48,6 @@ body {
     grid-column: 3/9;
     font-size: 1em;
     text-align: left;
-    display: none;
 }
 form {
     grid-column: 3/9;

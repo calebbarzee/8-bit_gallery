@@ -21,12 +21,13 @@ function display_art(art_list) {
     const artist_spot = document.getElementById("artist");
     const result_spot = document.getElementById("result");
 
-    console.log(art_list);
+    // console.log(art_list);
     index = generate_random_index();
     art_img_spot.src = art_list[index].filepath;
     art_img_spot.alt = art_list[index].title;
     movement_spot.innerHTML = art_list[index].movement;
     title_spot.innerHTML = art_list[index].title;
+    artist_spot.innerHTML = art_list[index].artist;
 
 }
 
@@ -50,7 +51,7 @@ function check_correct(artist_response){
 }
 function generate_random_index(){
         let random_index = Math.floor(Math.random() * (85 - 0) + 0);
-        // max = 18, min = 0
+        // max = 84, min = 0
         // console.log(random_index);
         return random_index
     }
